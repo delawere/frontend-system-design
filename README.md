@@ -24,9 +24,9 @@ When we define all requirements, we have to discuss it with the interviewer.
 Let's define requirements for our Facebook's clone
 ## Functional requirements
 - Feed
-- Search
 - Browsing posts
 - Adding new posts
+- Like/Unlike posts
 
 ## Non-functional requirements
 - Performance
@@ -57,6 +57,19 @@ Model is a client storage. Typically, Redux or other storage may play this role.
 
 View and Controller are required parts. Whereas, Model is optional. For example, Widgets (small embeded UI compoments) may not have storage. 
 
+For Facebook, high-level design of component may look like:
+<img src="https://github.com/delawere/frontend-system-design/assets/35735722/f56a6ab2-8348-4136-998b-9421a88798bf" width="600">
+
+With arrows we show the realtions between components. 
+**View**:
+  - **Feed**. Show recent (or most popular) posts for user. 
+  - **Create new post**. Screen for creating new posts.
+**Controller**. Responsible for preparing data to the view and handling user events (create new post, like/unlike posts etc).
+**API**. API Module is responsible for sending requests to the server and handling responses.
+**Client's Storage**. In client's storage we keep client's data. For example, when we receive posts, we firstly save it to the Client's storage.
+**Persistent Storage**. Browser storage, such as Local Storage. We can duplicate some data to this storage, in order to have access to them, when user close tab or even browser. For example, we should save information about new post. User can write part of the post and come back to it later.
+**Server**. Server handler client's requests.
+ 
 ## Backend Design
 
 
